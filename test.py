@@ -4,9 +4,11 @@ from PIL import Image
 import numpy as np
 import os
 
-eye_cascade = cv2.CascadeClassifier('cascade\haarcascade_eye.xml')
-face_cascade = cv2.CascadeClassifier('cascade\haarcascade_frontalface_default.xml')
-smile_cascade = cv2.CascadeClassifier('cascade\haarcascade_smile.xml')
+CASCADE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'cascade')
+
+eye_cascade = cv2.CascadeClassifier(os.path.join(CASCADE_DIR, 'haarcascade_eye.xml'))
+face_cascade = cv2.CascadeClassifier(os.path.join(CASCADE_DIR, 'haarcascade_frontalface_default.xml'))
+smile_cascade = cv2.CascadeClassifier(os.path.join(CASCADE_DIR, 'haarcascade_smile.xml'))
 
 def detect_faces(our_image):
 	new_img = np.array(our_image.convert('RGB'))
